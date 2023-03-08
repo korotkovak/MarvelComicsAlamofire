@@ -11,6 +11,32 @@ class ComicViewCell: UICollectionViewCell {
 
     static let identifier = "DetailViewCell"
 
+    var comic: Comic? {
+        didSet {
+            DispatchQueue.main.async {
+                self.titleLabel.text = self.comic?.title
+                self.pagesLabel.text = String(describing: self.comic?.pageCount)
+            }
+
+            let queue = DispatchQueue.global()
+            queue.async {
+                guard let imagePath = self.comic?.thumbnail.path,
+                      let imageFormat = self.comic?.thumbnail.format,
+                      let imageURL = URL(string: "\(imagePath).\(imageFormat)"),
+                      let imageData = try? Data(contentsOf: imageURL)
+                else {
+                    DispatchQueue.main.async {
+                        self.imageComic.image = UIImage(named: "")
+                    }
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.imageComic.image = UIImage(data: imageData)
+                }
+            }
+        }
+    }
+
     // MARK: - Outlets
 
     private lazy var imageComic: UIImageView = {

@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Alamofire
 
 class ComicViewController: UIViewController {
+
+    var networkingService: NetworkingService?
+    var comics: ComicDataContainer?
 
     // MARK: - Outlets
 
@@ -42,6 +46,7 @@ class ComicViewController: UIViewController {
         setupView()
         setupHeirarchy()
         setupLayout()
+        fetchData()
     }
 
     private func setupView() {
@@ -62,6 +67,30 @@ class ComicViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
     }
+
+    private func fetchData() {
+//        networkingService?.getData(urlRequest: networkingService?.getUrlMarvel(),
+//                                   comletion: { result in
+//            switch result {
+//            case .success(let dataComics):
+//                print(dataComics)
+//                self.comics = dataComics
+//            case .failure(let error):
+//                print(error)
+//            }
+//        })
+
+        let request = AF.request("https://api.jikan.moe/v4/manga/1/characters")
+        request.responseDecodable(of: ComicDataContainer.self) { response in
+
+            guard let comic = response.value else {
+                return
+            }
+            self.comics = comic
+
+//            self.tableView.reloadData()
+        }
+    }
 }
 
 // MARK: - Extension
@@ -72,14 +101,16 @@ extension ComicViewController: UICollectionViewDataSource,
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return comics?.results.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ComicViewCell.identifier,
-                                                      for: indexPath)
-
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ComicViewCell.identifier,
+                                                            for: indexPath) as? ComicViewCell
+        else { return UICollectionViewCell() }
+        let comic = comics?.results
+        cell.comic = comic?[indexPath.row]
         return cell
     }
 

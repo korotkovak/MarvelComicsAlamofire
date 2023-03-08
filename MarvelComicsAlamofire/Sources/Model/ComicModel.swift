@@ -21,15 +21,15 @@ struct Comic: Codable {
     var title: String?
     var description: String?
     var pageCount: Int?
-    var dates: [ComicDate]?
+//    var dates: [ComicDate]?
     var prices: [ComicPrice]?
     var thumbnail: Image
     var creators: CreatorList
 }
 
 struct Image: Codable {
-    var path: String
-    var format: String
+    var path: String?
+    var format: String?
 
     enum CodingKeys: String, CodingKey {
         case format = "extension"
@@ -37,10 +37,10 @@ struct Image: Codable {
     }
 }
 
-struct ComicDate: Codable {
-    var type: String?
-    var date: Date?
-}
+//struct ComicDate: Codable {
+//    var type: String?
+//    var date: Date?
+//}
 
 struct ComicPrice: Codable {
     var price: Float?

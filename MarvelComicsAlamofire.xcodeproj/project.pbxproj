@@ -17,6 +17,8 @@
 		C1667C9F29B8A0A90011EA81 /* ComicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */; };
 		C1667CA229B8B7AB0011EA81 /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */; };
 		C1667CA629B8C7660011EA81 /* ComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA529B8C7660011EA81 /* ComicModel.swift */; };
+		C1667CA829B8C9C60011EA81 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA729B8C9C60011EA81 /* NetworkingService.swift */; };
+		C1667CAA29B8C9DF0011EA81 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA929B8C9DF0011EA81 /* NetworkingError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewCell.swift; sourceTree = "<group>"; };
 		C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
 		C1667CA529B8C7660011EA81 /* ComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicModel.swift; sourceTree = "<group>"; };
+		C1667CA729B8C9C60011EA81 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		C1667CA929B8C9DF0011EA81 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 		C1667C9629B8869C0011EA81 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				C1667CA729B8C9C60011EA81 /* NetworkingService.swift */,
+				C1667CA929B8C9DF0011EA81 /* NetworkingError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -213,9 +219,11 @@
 			files = (
 				C1667C8329B885D00011EA81 /* ComicViewController.swift in Sources */,
 				C1667C9F29B8A0A90011EA81 /* ComicViewCell.swift in Sources */,
+				C1667CAA29B8C9DF0011EA81 /* NetworkingError.swift in Sources */,
 				C1667C7F29B885D00011EA81 /* AppDelegate.swift in Sources */,
 				C1667CA229B8B7AB0011EA81 /* UIColor + Ext.swift in Sources */,
 				C1667C8129B885D00011EA81 /* SceneDelegate.swift in Sources */,
+				C1667CA829B8C9C60011EA81 /* NetworkingService.swift in Sources */,
 				C1667CA629B8C7660011EA81 /* ComicModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
