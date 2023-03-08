@@ -14,6 +14,8 @@
 		C1667C8B29B885D20011EA81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1667C8929B885D20011EA81 /* LaunchScreen.storyboard */; };
 		C1667C9A29B888D90011EA81 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C1667C9929B888D90011EA81 /* SnapKit */; };
 		C1667C9D29B888E60011EA81 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C1667C9C29B888E60011EA81 /* Alamofire */; };
+		C1667C9F29B8A0A90011EA81 /* ComicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */; };
+		C1667CA229B8B7AB0011EA81 /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		C1667C8729B885D20011EA81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1667C8A29B885D20011EA81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1667C8C29B885D20011EA81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewCell.swift; sourceTree = "<group>"; };
+		C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 		C1667C9329B886820011EA81 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C1667CA029B8B79A0011EA81 /* Extension */,
 				C1667C9429B8868B0011EA81 /* App */,
 				C1667C9729B886A30011EA81 /* View */,
 				C1667C9629B8869C0011EA81 /* Networking */,
@@ -112,8 +117,17 @@
 			isa = PBXGroup;
 			children = (
 				C1667C8229B885D00011EA81 /* ComicViewController.swift */,
+				C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C1667CA029B8B79A0011EA81 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,7 +209,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1667C8329B885D00011EA81 /* ComicViewController.swift in Sources */,
+				C1667C9F29B8A0A90011EA81 /* ComicViewCell.swift in Sources */,
 				C1667C7F29B885D00011EA81 /* AppDelegate.swift in Sources */,
+				C1667CA229B8B7AB0011EA81 /* UIColor + Ext.swift in Sources */,
 				C1667C8129B885D00011EA81 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +358,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -373,6 +390,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
