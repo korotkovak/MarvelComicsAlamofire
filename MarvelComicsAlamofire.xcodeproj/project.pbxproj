@@ -16,6 +16,7 @@
 		C1667C9D29B888E60011EA81 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C1667C9C29B888E60011EA81 /* Alamofire */; };
 		C1667C9F29B8A0A90011EA81 /* ComicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */; };
 		C1667CA229B8B7AB0011EA81 /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */; };
+		C1667CA629B8C7660011EA81 /* ComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA529B8C7660011EA81 /* ComicModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C1667C8C29B885D20011EA81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewCell.swift; sourceTree = "<group>"; };
 		C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
+		C1667CA529B8C7660011EA81 /* ComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		C1667C9529B8868F0011EA81 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C1667CA529B8C7660011EA81 /* ComicModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				C1667C7F29B885D00011EA81 /* AppDelegate.swift in Sources */,
 				C1667CA229B8B7AB0011EA81 /* UIColor + Ext.swift in Sources */,
 				C1667C8129B885D00011EA81 /* SceneDelegate.swift in Sources */,
+				C1667CA629B8C7660011EA81 /* ComicModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
