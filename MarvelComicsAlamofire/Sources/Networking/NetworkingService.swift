@@ -9,7 +9,7 @@ import Foundation
 import CryptoKit
 import Alamofire
 
-class NetworkingService {
+final class NetworkingService {
     private func MD5(string: String) -> String {
         let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())
 
@@ -29,7 +29,7 @@ class NetworkingService {
         let ts = String(Date().timeIntervalSince1970)
         let hash = MD5(string: "\(ts)\(privateKey)\(publicKey)")
 
-        let queryItemLimit = URLQueryItem(name: "limit", value: "20")
+        let queryItemLimit = URLQueryItem(name: "limit", value: "50")
         let queryItemFormatType = URLQueryItem(name: "formatType", value: "comic")
         let queryItemTs = URLQueryItem(name: "ts", value: ts)
         let queryItemApiKey = URLQueryItem(name: "apikey", value: publicKey)
@@ -42,29 +42,25 @@ class NetworkingService {
                                  queryItemHash]
 
         let url = components.url
-        print(url)
         return url
     }
 
     func getData(urlRequest: URL?,
-                        comletion: @escaping (Result<ComicDataContainer,
-                                              NetworkingError>) -> Void) {
+                 comletion: @escaping (Result<ComicDataWrapper,
+                                       NetworkingError>) -> Void) {
         guard let url = urlRequest else {
-            comletion(.failure(.invalidURL))
+            comletion(.failure(.invalidPath))
             return
         }
 
-        let queue = DispatchQueue.global()
-        queue.async {
-            _ = AF.request(url)
-                .validate()
-                .responseDecodable(of: ComicDataContainer.self) { response in
+        AF.request(url)
+            .validate()
+            .responseDecodable(of: ComicDataWrapper.self) { response in
                 guard let comic = response.value else {
-                    comletion(.failure(.errorService))
+                    comletion(.failure(.decoding))
                     return
                 }
                 comletion(.success(comic))
             }
-        }
     }
 }

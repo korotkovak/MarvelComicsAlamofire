@@ -8,8 +8,8 @@
 import Foundation
 
 enum NetworkingError: String, Error {
-    case invalidURL = "Неверный url"
-    case errorService = "Ошибки сервера"
+    case invalidPath = "Invalid Path"
+    case decoding = "There was an error decoding the type"
 }
 
 extension NetworkingError: LocalizedError {

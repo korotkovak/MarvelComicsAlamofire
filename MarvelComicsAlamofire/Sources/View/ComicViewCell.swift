@@ -7,29 +7,30 @@
 
 import UIKit
 
-class ComicViewCell: UICollectionViewCell {
+final class ComicViewCell: UICollectionViewCell {
 
-    static let identifier = "DetailViewCell"
+    static let identifier = "ComicViewCell"
 
     var comic: Comic? {
         didSet {
             DispatchQueue.main.async {
                 self.titleLabel.text = self.comic?.title
-                self.pagesLabel.text = String(describing: self.comic?.pageCount)
+
+                if self.comic?.pageCount == 0 || self.comic?.pageCount == nil {
+                    self.pagesLabel.text = "Number of pages: is unknown"
+                } else if let page = self.comic?.pageCount {
+                    self.pagesLabel.text = "Number of pages: \(page)"
+                }
             }
 
-            let queue = DispatchQueue.global()
+            let queue = DispatchQueue(label: "ComicViewCell")
             queue.async {
                 guard let imagePath = self.comic?.thumbnail.path,
                       let imageFormat = self.comic?.thumbnail.format,
                       let imageURL = URL(string: "\(imagePath).\(imageFormat)"),
                       let imageData = try? Data(contentsOf: imageURL)
-                else {
-                    DispatchQueue.main.async {
-                        self.imageComic.image = UIImage(named: "")
-                    }
-                    return
-                }
+                else { return }
+
                 DispatchQueue.main.async {
                     self.imageComic.image = UIImage(data: imageData)
                 }
@@ -41,8 +42,6 @@ class ComicViewCell: UICollectionViewCell {
 
     private lazy var imageComic: UIImageView = {
         let imageView = UIImageView()
-        let image = UIImage(named: "Spider-Man")
-        imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -53,18 +52,15 @@ class ComicViewCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.textColor = .white
         label.numberOfLines = 3
-        label.text = "Spider-Man: Homecoming Spider-Man: Homecoming"
         return label
     }()
 
     private lazy var pagesLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.text = "Number of pages: 120"
         label.textColor = .white
         return label
     }()
-
 
     // MARK: - Initial
 
@@ -103,7 +99,7 @@ class ComicViewCell: UICollectionViewCell {
 
         titleLabel.snp.makeConstraints { make in
             make.left.equalTo(imageComic.snp.right).offset(12)
-            make.top.equalTo(16)
+            make.top.equalTo(12)
             make.right.equalTo(-20)
         }
 
@@ -112,5 +108,4 @@ class ComicViewCell: UICollectionViewCell {
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
         }
     }
-    
 }
