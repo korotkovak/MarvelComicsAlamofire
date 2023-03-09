@@ -58,9 +58,19 @@ final class ComicViewController: UIViewController {
     }
 
     private func setupView() {
+        let backButton = UIImage(named: "Back-Arrow")
+        let backBarButton = UIBarButtonItem(title: "",
+                                            style: .plain,
+                                            target: nil,
+                                            action: nil)
         view.backgroundColor = .black
+        navigationController?.navigationBar.backIndicatorImage = backButton
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backButton
+        navigationItem.backBarButtonItem = backBarButton
+        navigationController?.navigationBar.tintColor = .white
         navigationItem.titleView = logoImageView
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(),
+                                                               for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
     }
@@ -138,14 +148,14 @@ extension ComicViewController: UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        guard let cell = collectionView.dequeueReusableCell(
+        guard let item = collectionView.dequeueReusableCell(
             withReuseIdentifier: ComicViewCell.identifier,
             for: indexPath
         ) as? ComicViewCell else { return UICollectionViewCell() }
 
         let comic = comics?.data.results
-        cell.comic = comic?[indexPath.row]
-        return cell
+        item.comic = comic?[indexPath.row]
+        return item
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -158,5 +168,14 @@ extension ComicViewController: UICollectionViewDataSource,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        let detailViewController = DetailViewController()
+        collectionView.deselectItem(at: indexPath, animated: true)
+        guard let comic = comics?.data.results[indexPath.row] else { return }
+        detailViewController.fillSettings(with: comic)
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
