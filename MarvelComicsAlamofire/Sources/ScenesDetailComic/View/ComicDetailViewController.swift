@@ -190,6 +190,8 @@ final class ComicDetailViewController: UIViewController, ComicDetailViewProtocol
         }
     }
 
+    // MARK: - Method
+
     private func showSpinner() {
         spinner.isHidden = false
         spinner.startAnimating()

@@ -36,7 +36,7 @@ final class NetworkingService: NetworkingServiceProtocol {
         let ts = String(Date().timeIntervalSince1970)
         let hash = MD5(string: "\(ts)\(privateKey)\(publicKey)")
 
-        let queryItemLimit = URLQueryItem(name: "limit", value: "50")
+        let queryItemLimit = URLQueryItem(name: "limit", value: "100")
         let queryItemFormatType = URLQueryItem(name: "formatType", value: "comic")
         let queryItemTs = URLQueryItem(name: "ts", value: ts)
         let queryItemApiKey = URLQueryItem(name: "apikey", value: publicKey)

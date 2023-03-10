@@ -83,6 +83,8 @@ final class ComicViewCell: UICollectionViewCell, ComicViewCellProtocol {
         }
     }
 
+    // MARK: - Method
+
     func fillSettings(with model: Comic?) {
         guard let model = model else { return }
 

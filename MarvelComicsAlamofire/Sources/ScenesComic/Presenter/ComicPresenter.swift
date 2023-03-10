@@ -18,6 +18,7 @@ protocol ComicViewCellProtocol: AnyObject {
 
 protocol ComicViewPresenterProtocol: AnyObject {
     var comics: ComicDataWrapper? { get set }
+    var filterComic: [Comic] { get set }
     init(view: ComicViewProtocol,
          networkService: NetworkingServiceProtocol)
     func fetchData()
@@ -28,6 +29,7 @@ final class ComicPresenter: ComicViewPresenterProtocol {
     let networkService: NetworkingServiceProtocol
 
     var comics: ComicDataWrapper?
+    var filterComic = [Comic]()
 
     required init(view: ComicViewProtocol,
                   networkService: NetworkingServiceProtocol) {

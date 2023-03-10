@@ -10,6 +10,7 @@ import UIKit
 final class ComicViewController: UIViewController, ComicViewProtocol {
 
     var presenter: ComicViewPresenterProtocol?
+    var isFiltered = false
 
     // MARK: - Outlets
 
@@ -33,6 +34,47 @@ final class ComicViewController: UIViewController, ComicViewProtocol {
         return imageView
     }()
 
+    private lazy var searchTextField: UITextField = {
+        let textField = UITextField()
+        textField.textColor = .white
+        textField.placeholder = "Search comic"
+        textField.backgroundColor = UIColor().hexStringToUIColor(hex: "161616")
+        textField.textAlignment = .left
+        return textField
+    }()
+
+    private lazy var searchButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Search", for: .normal)
+        button.backgroundColor = .red
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        button.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var cancelFilterButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Cancel filter", for: .normal)
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.red.cgColor
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        button.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var stack: UIStackView = {
+        let stack = UIStackView()
+        stack.alignment = .leading
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.spacing = 20
+        stack.addArrangedSubview(searchButton)
+        stack.addArrangedSubview(cancelFilterButton)
+        return stack
+    }()
+
     private lazy var spinner: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
         indicator.color = .red
@@ -51,6 +93,8 @@ final class ComicViewController: UIViewController, ComicViewProtocol {
     private func commonInit() {
         setupView()
         setupHeirarchy()
+        setupIcons()
+        setupKeyboard()
         setupLayout()
         showSpinner()
     }
@@ -74,20 +118,56 @@ final class ComicViewController: UIViewController, ComicViewProtocol {
     }
 
     private func setupHeirarchy() {
+        view.addSubview(searchTextField)
+        view.addSubview(stack)
         view.addSubview(collectionView)
         view.addSubview(spinner)
     }
 
+    private func setupIcons() {
+        if let imageLeftIconInSearch = UIImage(systemName: "magnifyingglass") {
+            searchTextField.setLeftIcon(imageLeftIconInSearch)
+        }
+    }
+
+    private func setupKeyboard() {
+        searchTextField.delegate = self
+        self.hideKeyboardWhenTappedAround()
+    }
+
     private func setupLayout() {
+        searchTextField.snp.makeConstraints { make in
+            make.left.equalTo(view).offset(10)
+            make.right.equalTo(view).offset(-10)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.height.equalTo(50)
+        }
+
+        searchButton.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
+
+        cancelFilterButton.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
+
+        stack.snp.makeConstraints { make in
+            make.left.equalTo(view).offset(10)
+            make.right.equalTo(view).offset(-10)
+            make.top.equalTo(searchTextField.snp.bottom).offset(14)
+        }
+
         collectionView.snp.makeConstraints { make in
             make.left.right.bottom.equalTo(view)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.top.equalTo(stack.snp.bottom).offset(20)
         }
 
         spinner.snp.makeConstraints { make in
             make.center.equalTo(view)
         }
     }
+
+    // MARK: - Method
 
     private func showSpinner() {
         spinner.isHidden = false
@@ -122,9 +202,34 @@ final class ComicViewController: UIViewController, ComicViewProtocol {
             showAlert(title: error.rawValue, message: "")
         }
     }
+
+    // MARK: - Action
+
+    @objc private func searchButtonTapped() {
+        guard let searchText = searchTextField.text,
+              !searchText.isEmpty,
+        let filterComic = presenter?.filterComic else { return }
+
+        searchTextField.text = ""
+
+        if filterComic.isEmpty {
+            showAlert(title: "No matches found", message: "")
+            isFiltered = false
+        } else {
+            collectionView.reloadData()
+            isFiltered = false
+        }
+    }
+
+    @objc private func cancelButtonTapped() {
+        guard presenter?.filterComic != nil else { return }
+        presenter?.filterComic.removeAll()
+        collectionView.reloadData()
+        isFiltered = false
+    }
 }
 
-// MARK: - Extension
+// MARK: - UICollectionViewDataSource
 
 extension ComicViewController: UICollectionViewDataSource,
                                UICollectionViewDelegate,
@@ -132,7 +237,10 @@ extension ComicViewController: UICollectionViewDataSource,
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return presenter?.comics?.data.results.count ?? 0
+        if let filterComic = presenter?.filterComic, !filterComic.isEmpty {
+            return filterComic.count
+        }
+        return isFiltered ? 0 : presenter?.comics?.data.results.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -143,9 +251,12 @@ extension ComicViewController: UICollectionViewDataSource,
             for: indexPath
         ) as? ComicViewCell else { return UICollectionViewCell() }
 
-        if let comic = presenter?.comics?.data.results {
+        if let filterComic = presenter?.filterComic, !filterComic.isEmpty {
+            item.fillSettings(with: filterComic[indexPath.row])
+        } else if let comic = presenter?.comics?.data.results {
             item.fillSettings(with: comic[indexPath.row])
         }
+
         return item
     }
 
@@ -164,8 +275,63 @@ extension ComicViewController: UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        guard let comic = presenter?.comics?.data.results[indexPath.row] else { return }
-        let detailViewController = ModuleBuilder.createDetailComicModule(comic: comic)
-        navigationController?.pushViewController(detailViewController, animated: true)
+
+        if let filterComic = presenter?.filterComic, !filterComic.isEmpty {
+            let detailViewController = ModuleBuilder.createDetailComicModule(
+                comic: filterComic[indexPath.row]
+            )
+            navigationController?.pushViewController(detailViewController,
+                                                     animated: true)
+        } else if let comic = presenter?.comics?.data.results[indexPath.row] {
+            let detailViewController = ModuleBuilder.createDetailComicModule(
+                comic: comic
+            )
+            navigationController?.pushViewController(detailViewController,
+                                                     animated: true)
+        }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension ComicViewController: UITextFieldDelegate {
+
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        if let text = textField.text {
+            filterText(text)
+        }
+        return true
+    }
+
+    func filterText(_ query: String) {
+        guard let comics = presenter?.comics?.data.results else { return }
+        guard presenter?.filterComic != nil else { return }
+
+        presenter?.filterComic.removeAll()
+
+        for comic in comics {
+            guard let titleComic = comic.title else { return }
+            if titleComic.lowercased().starts(with: query.lowercased()) {
+                presenter?.filterComic.append(comic)
+            }
+            isFiltered = true
+        }
+    }
+
+    @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
+    }
+
+    private func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
