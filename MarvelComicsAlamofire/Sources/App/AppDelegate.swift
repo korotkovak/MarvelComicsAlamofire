@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import Alamofire
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
