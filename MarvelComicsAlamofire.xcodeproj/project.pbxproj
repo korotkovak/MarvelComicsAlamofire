@@ -24,6 +24,8 @@
 		C1E8841D29BB43DA005E4B78 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8841C29BB43DA005E4B78 /* ModuleBuilder.swift */; };
 		C1E8842329BB5EDF005E4B78 /* ComicDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8842229BB5EDF005E4B78 /* ComicDetailPresenter.swift */; };
 		C1E8842A29BB7813005E4B78 /* TextField + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8842929BB7813005E4B78 /* TextField + Ext.swift */; };
+		C1E8842D29BBA03A005E4B78 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8842C29BBA03A005E4B78 /* Colors.swift */; };
+		C1E8842F29BBA046005E4B78 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8842E29BBA046005E4B78 /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		C1E8841C29BB43DA005E4B78 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		C1E8842229BB5EDF005E4B78 /* ComicDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailPresenter.swift; sourceTree = "<group>"; };
 		C1E8842929BB7813005E4B78 /* TextField + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField + Ext.swift"; sourceTree = "<group>"; };
+		C1E8842C29BBA03A005E4B78 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		C1E8842E29BBA046005E4B78 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		C1667C9329B886820011EA81 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C1E8842B29BBA029005E4B78 /* Constants */,
 				C1667C9429B8868B0011EA81 /* App */,
 				C1667CA029B8B79A0011EA81 /* Extension */,
 				C1667C9629B8869C0011EA81 /* Networking */,
@@ -202,6 +207,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C1E8842B29BBA029005E4B78 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8842C29BBA03A005E4B78 /* Colors.swift */,
+				C1E8842E29BBA046005E4B78 /* Fonts.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -281,8 +295,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1E8841429B9CF1C005E4B78 /* ComicDetailViewController.swift in Sources */,
+				C1E8842F29BBA046005E4B78 /* Fonts.swift in Sources */,
 				C1667C8329B885D00011EA81 /* ComicViewController.swift in Sources */,
 				C1E8841A29BB413B005E4B78 /* ComicPresenter.swift in Sources */,
+				C1E8842D29BBA03A005E4B78 /* Colors.swift in Sources */,
 				C1E8842A29BB7813005E4B78 /* TextField + Ext.swift in Sources */,
 				C1667C9F29B8A0A90011EA81 /* ComicViewCell.swift in Sources */,
 				C1E8841D29BB43DA005E4B78 /* ModuleBuilder.swift in Sources */,

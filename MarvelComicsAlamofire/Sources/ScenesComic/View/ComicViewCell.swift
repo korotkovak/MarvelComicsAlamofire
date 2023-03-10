@@ -7,9 +7,19 @@
 
 import UIKit
 
+// MARK: - Constants
+
+fileprivate enum Strings {
+    static let identifier = "ComicViewCell"
+    static let fatalError = "init(coder:) has not been implemented"
+    static let pagesLabelText = "Number of pages: "
+}
+
+// MARK: - ComicViewCell
+
 final class ComicViewCell: UICollectionViewCell, ComicViewCellProtocol {
 
-    static let identifier = "ComicViewCell"
+    static let identifier = Strings.identifier
 
     // MARK: - Outlets
 
@@ -22,8 +32,8 @@ final class ComicViewCell: UICollectionViewCell, ComicViewCellProtocol {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .white
+        label.font = Fonts.boldOfSize20
+        label.textColor = Colors.white
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         return label
@@ -31,8 +41,8 @@ final class ComicViewCell: UICollectionViewCell, ComicViewCellProtocol {
 
     private lazy var pagesLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = .white
+        label.font = Fonts.regularOfSize14
+        label.textColor = Colors.white
         return label
     }()
 
@@ -44,7 +54,7 @@ final class ComicViewCell: UICollectionViewCell, ComicViewCellProtocol {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Strings.fatalError)
     }
 
     // MARK: - Setup
@@ -56,7 +66,7 @@ final class ComicViewCell: UICollectionViewCell, ComicViewCellProtocol {
     }
 
     private func setupView() {
-        contentView.backgroundColor = UIColor().hexStringToUIColor(hex: "161616")
+        contentView.backgroundColor = Colors.gray
     }
 
     private func setupHeirarchy() {
@@ -91,9 +101,9 @@ final class ComicViewCell: UICollectionViewCell, ComicViewCellProtocol {
         titleLabel.text = model.title
 
         if model.pageCount == 0 || model.pageCount == nil {
-            pagesLabel.text = "Number of pages: is unknown"
+            pagesLabel.text = Strings.pagesLabelText + "is unknown"
         } else if let page = model.pageCount {
-            pagesLabel.text = "Number of pages: \(page)"
+            pagesLabel.text = Strings.pagesLabelText + "\(page)"
         }
 
         let queue = DispatchQueue(label: "ComicViewCell")

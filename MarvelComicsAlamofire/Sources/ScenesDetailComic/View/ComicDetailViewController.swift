@@ -7,6 +7,10 @@
 
 import UIKit
 
+fileprivate enum Strings {
+    static let pagesLabelText = "Number of pages: "
+}
+
 final class ComicDetailViewController: UIViewController, ComicDetailViewProtocol {
 
     var presenter: ComicDetailPresenterProtocol?
@@ -22,8 +26,8 @@ final class ComicDetailViewController: UIViewController, ComicDetailViewProtocol
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .white
+        label.font = Fonts.boldOfSize24
+        label.textColor = Colors.white
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         return label
@@ -31,23 +35,23 @@ final class ComicDetailViewController: UIViewController, ComicDetailViewProtocol
 
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.font = Fonts.regularboldOfSize16
+        label.textColor = Colors.white
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
-        label.textColor = .white
         return label
     }()
 
     private lazy var editorNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        label.textColor = .white
+        label.font = Fonts.boldOfSize18
+        label.textColor = Colors.white
         return label
     }()
 
     private lazy var editorRoleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.font = Fonts.regularboldOfSize16
         label.numberOfLines = 0
         return label
     }()
@@ -65,15 +69,15 @@ final class ComicDetailViewController: UIViewController, ComicDetailViewProtocol
 
     private lazy var writerNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        label.textColor = .white
+        label.font = Fonts.boldOfSize18
+        label.textColor = Colors.white
         return label
     }()
 
     private lazy var writerRoleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .white
+        label.font = Fonts.regularboldOfSize16
+        label.textColor = Colors.white
         return label
     }()
 
@@ -90,14 +94,14 @@ final class ComicDetailViewController: UIViewController, ComicDetailViewProtocol
 
     private lazy var pagesLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .white
+        label.font = Fonts.regularboldOfSize16
+        label.textColor = Colors.white
         return label
     }()
 
     private lazy var spinner: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
-        indicator.color = .red
+        indicator.color = Colors.red
         return indicator
     }()
 
@@ -149,7 +153,7 @@ final class ComicDetailViewController: UIViewController, ComicDetailViewProtocol
     }
 
     private func setupView() {
-        view.backgroundColor = .black
+        view.backgroundColor = Colors.black
     }
 
     private func setupHeirarchy() {
@@ -210,9 +214,9 @@ final class ComicDetailViewController: UIViewController, ComicDetailViewProtocol
             self.descriptionLabel.text = model.description
 
             if model.pageCount == 0 || model.pageCount == nil {
-                self.pagesLabel.text = "Number of pages: is unknown"
+                self.pagesLabel.text = Strings.pagesLabelText + "is unknown"
             } else if let page = model.pageCount {
-                self.pagesLabel.text = "Number of pages: \(page)"
+                self.pagesLabel.text = Strings.pagesLabelText + "\(page)"
             }
 
             guard let creators = model.creators.items else { return }

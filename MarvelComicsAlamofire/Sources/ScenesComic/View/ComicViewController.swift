@@ -7,6 +7,24 @@
 
 import UIKit
 
+// MARK: - Constants
+
+fileprivate enum Strings {
+    static let logoMarvel = "Marvel-Logo"
+    static let searchTextFieldPlaceholder = "Search comic"
+    static let searchButtonSetTitle = "Search"
+    static let cancelButtonSetTitle = "Cancel filter"
+    static let cancelAlert = UIAlertAction(title: "Ok!", style: .cancel)
+    static let alertNoMatchesFound = "No matches found"
+}
+
+fileprivate enum Images {
+    static let backButton = UIImage(named: "Back-Arrow")
+    static let imageLeftIconInSearch = UIImage(systemName: "magnifyingglass")
+}
+
+// MARK: - ComicViewController
+
 final class ComicViewController: UIViewController, ComicViewProtocol {
 
     var presenter: ComicViewPresenterProtocol?
@@ -27,7 +45,7 @@ final class ComicViewController: UIViewController, ComicViewProtocol {
 
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
-        let image = UIImage(named: "Marvel-Logo")
+        let image = UIImage(named: Strings.logoMarvel)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.image = image
@@ -37,29 +55,30 @@ final class ComicViewController: UIViewController, ComicViewProtocol {
     private lazy var searchTextField: UITextField = {
         let textField = UITextField()
         textField.textColor = .white
-        textField.placeholder = "Search comic"
-        textField.backgroundColor = UIColor().hexStringToUIColor(hex: "161616")
+        textField.placeholder = Strings.searchTextFieldPlaceholder
+        textField.backgroundColor = Colors.gray
         textField.textAlignment = .left
         return textField
     }()
 
     private lazy var searchButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Search", for: .normal)
-        button.backgroundColor = .red
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        button.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        button.setTitle(Strings.searchButtonSetTitle, for: .normal)
+        button.backgroundColor = Colors.red
+        button.setTitleColor(Colors.white, for: .normal)
+        button.titleLabel?.font = Fonts.semiboldOfSize16
+        button.addTarget(self, action: #selector(searchButtonTapped),
+                         for: .touchUpInside)
         return button
     }()
 
     private lazy var cancelFilterButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Cancel filter", for: .normal)
+        button.setTitle(Strings.cancelButtonSetTitle, for: .normal)
         button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.red.cgColor
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        button.layer.borderColor = Colors.red.cgColor
+        button.setTitleColor(Colors.white, for: .normal)
+        button.titleLabel?.font = Fonts.semiboldOfSize16
         button.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -77,7 +96,7 @@ final class ComicViewController: UIViewController, ComicViewProtocol {
 
     private lazy var spinner: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
-        indicator.color = .red
+        indicator.color = Colors.red
         return indicator
     }()
 
@@ -100,16 +119,15 @@ final class ComicViewController: UIViewController, ComicViewProtocol {
     }
 
     private func setupView() {
-        let backButton = UIImage(named: "Back-Arrow")
         let backBarButton = UIBarButtonItem(title: "",
                                             style: .plain,
                                             target: nil,
                                             action: nil)
-        view.backgroundColor = .black
-        navigationController?.navigationBar.backIndicatorImage = backButton
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backButton
+        view.backgroundColor = Colors.black
+        navigationController?.navigationBar.backIndicatorImage = Images.backButton
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = Images.backButton
         navigationItem.backBarButtonItem = backBarButton
-        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.tintColor = Colors.white
         navigationItem.titleView = logoImageView
         navigationController?.navigationBar.setBackgroundImage(UIImage(),
                                                                for: .default)
@@ -125,8 +143,8 @@ final class ComicViewController: UIViewController, ComicViewProtocol {
     }
 
     private func setupIcons() {
-        if let imageLeftIconInSearch = UIImage(systemName: "magnifyingglass") {
-            searchTextField.setLeftIcon(imageLeftIconInSearch)
+        if let image = Images.imageLeftIconInSearch {
+            searchTextField.setLeftIcon(image)
         }
     }
 
@@ -185,7 +203,7 @@ final class ComicViewController: UIViewController, ComicViewProtocol {
             message: message,
             preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "Ok!", style: .cancel))
+        alert.addAction(Strings.cancelAlert)
         self.present(alert, animated: true)
     }
 
@@ -213,7 +231,7 @@ final class ComicViewController: UIViewController, ComicViewProtocol {
         searchTextField.text = ""
 
         if filterComic.isEmpty {
-            showAlert(title: "No matches found", message: "")
+            showAlert(title: Strings.alertNoMatchesFound, message: "")
             isFiltered = false
         } else {
             collectionView.reloadData()
@@ -326,7 +344,8 @@ extension ComicViewController: UITextFieldDelegate {
     }
 
     private func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
