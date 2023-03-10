@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum ComicNetworkingError: String, Error {
+enum NetworkingError: String, Error {
     case invalidPath = "Invalid Path"
     case decoding = "There was an error decoding the type"
 }
 
-extension ComicNetworkingError: LocalizedError {
+extension NetworkingError: LocalizedError {
     var errorDescription: String? {
         return NSLocalizedString(rawValue, comment: "")
     }

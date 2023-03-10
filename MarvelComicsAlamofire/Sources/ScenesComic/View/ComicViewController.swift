@@ -7,10 +7,9 @@
 
 import UIKit
 
-final class ComicViewController: UIViewController {
+final class ComicViewController: UIViewController, ComicViewProtocol {
 
-    private var networkingService = ComicNetworkingService()
-    private var comics: ComicDataWrapper?
+    var presenter: ComicViewPresenterProtocol?
 
     // MARK: - Outlets
 
@@ -54,7 +53,6 @@ final class ComicViewController: UIViewController {
         setupHeirarchy()
         setupLayout()
         showSpinner()
-        fetchData()
     }
 
     private func setupView() {
@@ -111,25 +109,17 @@ final class ComicViewController: UIViewController {
         self.present(alert, animated: true)
     }
 
-    private func fetchData() {
-        networkingService.getData(
-            urlRequest: networkingService.getUrlMarvel()
-        ) { [weak self] result in
-            switch result {
-            case .success(let dataComics):
-                self?.comics = dataComics
-                DispatchQueue.main.async {
-                    self?.hideSpinner()
-                    self?.collectionView.reloadData()
-                }
-            case .failure(let error):
-                switch error {
-                case .invalidPath:
-                    self?.showAlert(title: error.rawValue, message: "")
-                case .decoding:
-                    self?.showAlert(title: error.rawValue, message: "")
-                }
-            }
+    func succes() {
+        hideSpinner()
+        collectionView.reloadData()
+    }
+
+    func failure(error: NetworkingError) {
+        switch error {
+        case .invalidPath:
+            showAlert(title: error.rawValue, message: "")
+        case .decoding:
+            showAlert(title: error.rawValue, message: "")
         }
     }
 }
@@ -142,7 +132,7 @@ extension ComicViewController: UICollectionViewDataSource,
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return comics?.data.results.count ?? 0
+        return presenter?.comics?.data.results.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -153,8 +143,9 @@ extension ComicViewController: UICollectionViewDataSource,
             for: indexPath
         ) as? ComicViewCell else { return UICollectionViewCell() }
 
-        let comic = comics?.data.results
-        item.comic = comic?[indexPath.row]
+        if let comic = presenter?.comics?.data.results {
+            item.fillSettings(with: comic[indexPath.row])
+        }
         return item
     }
 
@@ -172,10 +163,9 @@ extension ComicViewController: UICollectionViewDataSource,
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = ComicDetailViewController()
         collectionView.deselectItem(at: indexPath, animated: true)
-        guard let comic = comics?.data.results[indexPath.row] else { return }
-        detailViewController.fillSettings(with: comic)
+        guard let comic = presenter?.comics?.data.results[indexPath.row] else { return }
+        let detailViewController = ModuleBuilder.createDetailComicModule(comic: comic)
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

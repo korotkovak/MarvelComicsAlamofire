@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class ComicDetailViewController: UIViewController {
+final class ComicDetailViewController: UIViewController, ComicDetailViewProtocol {
+
+    var presenter: ComicDetailPresenterProtocol?
 
     // MARK: - Outlets
 
@@ -143,6 +145,7 @@ final class ComicDetailViewController: UIViewController {
         setupView()
         setupHeirarchy()
         setupLayout()
+        presenter?.setComic()
     }
 
     private func setupView() {
@@ -197,7 +200,9 @@ final class ComicDetailViewController: UIViewController {
         spinner.stopAnimating()
     }
 
-    func fillSettings(with model: Comic) {
+    func fillSettings(with model: Comic?) {
+        guard let model = model else { return }
+        
         DispatchQueue.main.async {
             self.titleLabel.text = model.title
             self.descriptionLabel.text = model.description

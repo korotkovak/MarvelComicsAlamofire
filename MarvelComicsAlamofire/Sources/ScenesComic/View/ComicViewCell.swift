@@ -7,36 +7,9 @@
 
 import UIKit
 
-final class ComicViewCell: UICollectionViewCell {
+final class ComicViewCell: UICollectionViewCell, ComicViewCellProtocol {
 
     static let identifier = "ComicViewCell"
-
-    var comic: Comic? {
-        didSet {
-            DispatchQueue.main.async {
-                self.titleLabel.text = self.comic?.title
-
-                if self.comic?.pageCount == 0 || self.comic?.pageCount == nil {
-                    self.pagesLabel.text = "Number of pages: is unknown"
-                } else if let page = self.comic?.pageCount {
-                    self.pagesLabel.text = "Number of pages: \(page)"
-                }
-            }
-
-            let queue = DispatchQueue(label: "ComicViewCell")
-            queue.async {
-                guard let imagePath = self.comic?.thumbnail.path,
-                      let imageFormat = self.comic?.thumbnail.format,
-                      let imageURL = URL(string: "\(imagePath).\(imageFormat)"),
-                      let imageData = try? Data(contentsOf: imageURL)
-                else { return }
-
-                DispatchQueue.main.async {
-                    self.imageComic.image = UIImage(data: imageData)
-                }
-            }
-        }
-    }
 
     // MARK: - Outlets
 
@@ -107,6 +80,31 @@ final class ComicViewCell: UICollectionViewCell {
         pagesLabel.snp.makeConstraints { make in
             make.left.equalTo(imageComic.snp.right).offset(12)
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
+        }
+    }
+
+    func fillSettings(with model: Comic?) {
+        guard let model = model else { return }
+
+        titleLabel.text = model.title
+
+        if model.pageCount == 0 || model.pageCount == nil {
+            pagesLabel.text = "Number of pages: is unknown"
+        } else if let page = model.pageCount {
+            pagesLabel.text = "Number of pages: \(page)"
+        }
+
+        let queue = DispatchQueue(label: "ComicViewCell")
+        queue.async {
+            guard let imagePath = model.thumbnail.path,
+                  let imageFormat = model.thumbnail.format,
+                  let imageURL = URL(string: "\(imagePath).\(imageFormat)"),
+                  let imageData = try? Data(contentsOf: imageURL)
+            else { return }
+
+            DispatchQueue.main.async {
+                self.imageComic.image = UIImage(data: imageData)
+            }
         }
     }
 }

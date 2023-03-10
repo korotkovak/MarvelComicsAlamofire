@@ -9,7 +9,14 @@ import Foundation
 import CryptoKit
 import Alamofire
 
-final class ComicNetworkingService {
+protocol NetworkingServiceProtocol {
+    func getUrlMarvel() -> URL?
+    func getData(urlRequest: URL?,
+                 comletion: @escaping (Result<ComicDataWrapper,
+                                       NetworkingError>) -> Void)
+}
+
+final class NetworkingService: NetworkingServiceProtocol {
     private func MD5(string: String) -> String {
         let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())
 
@@ -47,7 +54,7 @@ final class ComicNetworkingService {
 
     func getData(urlRequest: URL?,
                  comletion: @escaping (Result<ComicDataWrapper,
-                                       ComicNetworkingError>) -> Void) {
+                                       NetworkingError>) -> Void) {
         guard let url = urlRequest else {
             comletion(.failure(.invalidPath))
             return
