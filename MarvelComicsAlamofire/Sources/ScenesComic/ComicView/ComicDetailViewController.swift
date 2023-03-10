@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+final class ComicDetailViewController: UIViewController {
 
     // MARK: - Outlets
 
@@ -36,21 +36,57 @@ class DetailViewController: UIViewController {
         return label
     }()
 
-    private lazy var pagesLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .white
-        return label
-    }()
-
-    private lazy var titleLabelInCell: UILabel = {
+    private lazy var editorNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = .white
         return label
     }()
 
-    private lazy var descriptionLabelInCell: UILabel = {
+    private lazy var editorRoleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.numberOfLines = 0
+        return label
+    }()
+
+    private lazy var stackEditor: UIStackView = {
+        let stack = UIStackView()
+        stack.alignment = .leading
+        stack.axis = .vertical
+        stack.distribution = .fill
+        stack.spacing = 5
+        stack.addArrangedSubview(editorNameLabel)
+        stack.addArrangedSubview(editorRoleLabel)
+        return stack
+    }()
+
+    private lazy var writerNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.textColor = .white
+        return label
+    }()
+
+    private lazy var writerRoleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.textColor = .white
+        return label
+    }()
+
+    private lazy var stackWriter: UIStackView = {
+        let stack = UIStackView()
+        stack.alignment = .leading
+        stack.axis = .vertical
+        stack.distribution = .fill
+        stack.spacing = 5
+        stack.addArrangedSubview(writerNameLabel)
+        stack.addArrangedSubview(writerRoleLabel)
+        return stack
+    }()
+
+    private lazy var pagesLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = .white
@@ -71,6 +107,8 @@ class DetailViewController: UIViewController {
         stack.spacing = 20
         stack.addArrangedSubview(descriptionLabel)
         stack.addArrangedSubview(pagesLabel)
+        stack.addArrangedSubview(stackEditor)
+        stack.addArrangedSubview(stackWriter)
         return stack
     }()
 
@@ -168,6 +206,20 @@ class DetailViewController: UIViewController {
                 self.pagesLabel.text = "Number of pages: is unknown"
             } else if let page = model.pageCount {
                 self.pagesLabel.text = "Number of pages: \(page)"
+            }
+
+            guard let creators = model.creators.items else { return }
+
+            for creator in creators {
+                if creator.role == "editor" {
+                    self.editorRoleLabel.text = creator.role
+                    self.editorNameLabel.text = creator.name
+                }
+
+                if creator.role == "writer" {
+                    self.writerRoleLabel.text = creator.role
+                    self.writerNameLabel.text = creator.name
+                }
             }
         }
 

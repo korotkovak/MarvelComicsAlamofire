@@ -17,9 +17,9 @@
 		C1667C9F29B8A0A90011EA81 /* ComicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */; };
 		C1667CA229B8B7AB0011EA81 /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */; };
 		C1667CA629B8C7660011EA81 /* ComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA529B8C7660011EA81 /* ComicModel.swift */; };
-		C1667CA829B8C9C60011EA81 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA729B8C9C60011EA81 /* NetworkingService.swift */; };
-		C1667CAA29B8C9DF0011EA81 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA929B8C9DF0011EA81 /* NetworkingError.swift */; };
-		C1E8841429B9CF1C005E4B78 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8841329B9CF1C005E4B78 /* DetailViewController.swift */; };
+		C1667CA829B8C9C60011EA81 /* ComicNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA729B8C9C60011EA81 /* ComicNetworkingService.swift */; };
+		C1667CAA29B8C9DF0011EA81 /* ComicNetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA929B8C9DF0011EA81 /* ComicNetworkingError.swift */; };
+		C1E8841429B9CF1C005E4B78 /* ComicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8841329B9CF1C005E4B78 /* ComicDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +33,9 @@
 		C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewCell.swift; sourceTree = "<group>"; };
 		C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
 		C1667CA529B8C7660011EA81 /* ComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicModel.swift; sourceTree = "<group>"; };
-		C1667CA729B8C9C60011EA81 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
-		C1667CA929B8C9DF0011EA81 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
-		C1E8841329B9CF1C005E4B78 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C1667CA729B8C9C60011EA81 /* ComicNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicNetworkingService.swift; sourceTree = "<group>"; };
+		C1667CA929B8C9DF0011EA81 /* ComicNetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicNetworkingError.swift; sourceTree = "<group>"; };
+		C1E8841329B9CF1C005E4B78 /* ComicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,11 +89,9 @@
 		C1667C9329B886820011EA81 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				C1667CA029B8B79A0011EA81 /* Extension */,
 				C1667C9429B8868B0011EA81 /* App */,
-				C1667C9729B886A30011EA81 /* View */,
-				C1667C9629B8869C0011EA81 /* Networking */,
-				C1667C9529B8868F0011EA81 /* Model */,
+				C1667CA029B8B79A0011EA81 /* Extension */,
+				C1E8841729BB2FA9005E4B78 /* ScenesComic */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -107,31 +105,31 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		C1667C9529B8868F0011EA81 /* Model */ = {
+		C1667C9529B8868F0011EA81 /* ComicModel */ = {
 			isa = PBXGroup;
 			children = (
 				C1667CA529B8C7660011EA81 /* ComicModel.swift */,
 			);
-			path = Model;
+			path = ComicModel;
 			sourceTree = "<group>";
 		};
-		C1667C9629B8869C0011EA81 /* Networking */ = {
+		C1667C9629B8869C0011EA81 /* ComicNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				C1667CA729B8C9C60011EA81 /* NetworkingService.swift */,
-				C1667CA929B8C9DF0011EA81 /* NetworkingError.swift */,
+				C1667CA729B8C9C60011EA81 /* ComicNetworkingService.swift */,
+				C1667CA929B8C9DF0011EA81 /* ComicNetworkingError.swift */,
 			);
-			path = Networking;
+			path = ComicNetworking;
 			sourceTree = "<group>";
 		};
-		C1667C9729B886A30011EA81 /* View */ = {
+		C1667C9729B886A30011EA81 /* ComicView */ = {
 			isa = PBXGroup;
 			children = (
 				C1667C8229B885D00011EA81 /* ComicViewController.swift */,
 				C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */,
-				C1E8841329B9CF1C005E4B78 /* DetailViewController.swift */,
+				C1E8841329B9CF1C005E4B78 /* ComicDetailViewController.swift */,
 			);
-			path = View;
+			path = ComicView;
 			sourceTree = "<group>";
 		};
 		C1667CA029B8B79A0011EA81 /* Extension */ = {
@@ -140,6 +138,24 @@
 				C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		C1E8841729BB2FA9005E4B78 /* ScenesComic */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8841829BB2FC2005E4B78 /* ComicPresenter */,
+				C1667C9729B886A30011EA81 /* ComicView */,
+				C1667C9629B8869C0011EA81 /* ComicNetworking */,
+				C1667C9529B8868F0011EA81 /* ComicModel */,
+			);
+			path = ScenesComic;
+			sourceTree = "<group>";
+		};
+		C1E8841829BB2FC2005E4B78 /* ComicPresenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ComicPresenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,14 +236,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1E8841429B9CF1C005E4B78 /* DetailViewController.swift in Sources */,
+				C1E8841429B9CF1C005E4B78 /* ComicDetailViewController.swift in Sources */,
 				C1667C8329B885D00011EA81 /* ComicViewController.swift in Sources */,
 				C1667C9F29B8A0A90011EA81 /* ComicViewCell.swift in Sources */,
-				C1667CAA29B8C9DF0011EA81 /* NetworkingError.swift in Sources */,
+				C1667CAA29B8C9DF0011EA81 /* ComicNetworkingError.swift in Sources */,
 				C1667C7F29B885D00011EA81 /* AppDelegate.swift in Sources */,
 				C1667CA229B8B7AB0011EA81 /* UIColor + Ext.swift in Sources */,
 				C1667C8129B885D00011EA81 /* SceneDelegate.swift in Sources */,
-				C1667CA829B8C9C60011EA81 /* NetworkingService.swift in Sources */,
+				C1667CA829B8C9C60011EA81 /* ComicNetworkingService.swift in Sources */,
 				C1667CA629B8C7660011EA81 /* ComicModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

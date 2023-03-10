@@ -9,8 +9,8 @@ import UIKit
 
 final class ComicViewController: UIViewController {
 
-    var networkingService = NetworkingService()
-    var comics: ComicDataWrapper?
+    private var networkingService = ComicNetworkingService()
+    private var comics: ComicDataWrapper?
 
     // MARK: - Outlets
 
@@ -101,7 +101,7 @@ final class ComicViewController: UIViewController {
         spinner.stopAnimating()
     }
 
-    func showAlert(title: String, message: String) {
+    private func showAlert(title: String, message: String) {
         let alert = UIAlertController(
             title: title,
             message: message,
@@ -172,7 +172,7 @@ extension ComicViewController: UICollectionViewDataSource,
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = DetailViewController()
+        let detailViewController = ComicDetailViewController()
         collectionView.deselectItem(at: indexPath, animated: true)
         guard let comic = comics?.data.results[indexPath.row] else { return }
         detailViewController.fillSettings(with: comic)

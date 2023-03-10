@@ -21,8 +21,6 @@ struct Comic: Codable {
     var title: String?
     var description: String?
     var pageCount: Int?
-//    var dates: [ComicDate]?
-    var prices: [ComicPrice]?
     var thumbnail: Image
     var creators: CreatorList
 }
@@ -35,15 +33,6 @@ struct Image: Codable {
         case format = "extension"
         case path
     }
-}
-
-//struct ComicDate: Codable {
-//    var type: String?
-//    var date: Date?
-//}
-
-struct ComicPrice: Codable {
-    var price: Float?
 }
 
 struct CreatorList: Codable {
