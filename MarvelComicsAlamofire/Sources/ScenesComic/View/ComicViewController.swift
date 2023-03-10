@@ -240,10 +240,11 @@ final class ComicViewController: UIViewController, ComicViewProtocol {
     }
 
     @objc private func cancelButtonTapped() {
-        guard presenter?.filterComic != nil else { return }
-        presenter?.filterComic.removeAll()
-        collectionView.reloadData()
-        isFiltered = false
+        if let filterComic = presenter?.filterComic, !filterComic.isEmpty {
+            presenter?.filterComic.removeAll()
+            collectionView.reloadData()
+            isFiltered = false
+        }
     }
 }
 
