@@ -9,21 +9,45 @@
 /* Begin PBXBuildFile section */
 		C1667C7F29B885D00011EA81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667C7E29B885D00011EA81 /* AppDelegate.swift */; };
 		C1667C8129B885D00011EA81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667C8029B885D00011EA81 /* SceneDelegate.swift */; };
-		C1667C8329B885D00011EA81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667C8229B885D00011EA81 /* ViewController.swift */; };
-		C1667C8629B885D00011EA81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1667C8429B885D00011EA81 /* Main.storyboard */; };
+		C1667C8329B885D00011EA81 /* ComicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667C8229B885D00011EA81 /* ComicViewController.swift */; };
 		C1667C8829B885D20011EA81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1667C8729B885D20011EA81 /* Assets.xcassets */; };
 		C1667C8B29B885D20011EA81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1667C8929B885D20011EA81 /* LaunchScreen.storyboard */; };
+		C1667C9A29B888D90011EA81 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C1667C9929B888D90011EA81 /* SnapKit */; };
+		C1667C9D29B888E60011EA81 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C1667C9C29B888E60011EA81 /* Alamofire */; };
+		C1667C9F29B8A0A90011EA81 /* ComicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */; };
+		C1667CA229B8B7AB0011EA81 /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */; };
+		C1667CA629B8C7660011EA81 /* ComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA529B8C7660011EA81 /* ComicModel.swift */; };
+		C1667CA829B8C9C60011EA81 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA729B8C9C60011EA81 /* NetworkingService.swift */; };
+		C1667CAA29B8C9DF0011EA81 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1667CA929B8C9DF0011EA81 /* NetworkingError.swift */; };
+		C1E8841429B9CF1C005E4B78 /* ComicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8841329B9CF1C005E4B78 /* ComicDetailViewController.swift */; };
+		C1E8841A29BB413B005E4B78 /* ComicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8841929BB413B005E4B78 /* ComicPresenter.swift */; };
+		C1E8841D29BB43DA005E4B78 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8841C29BB43DA005E4B78 /* ModuleBuilder.swift */; };
+		C1E8842329BB5EDF005E4B78 /* ComicDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8842229BB5EDF005E4B78 /* ComicDetailPresenter.swift */; };
+		C1E8842A29BB7813005E4B78 /* TextField + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8842929BB7813005E4B78 /* TextField + Ext.swift */; };
+		C1E8842D29BBA03A005E4B78 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8842C29BBA03A005E4B78 /* Colors.swift */; };
+		C1E8842F29BBA046005E4B78 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8842E29BBA046005E4B78 /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C1667C7B29B885D00011EA81 /* MarvelComicsAlamofire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelComicsAlamofire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1667C7E29B885D00011EA81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1667C8029B885D00011EA81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C1667C8229B885D00011EA81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C1667C8529B885D00011EA81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C1667C8229B885D00011EA81 /* ComicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewController.swift; sourceTree = "<group>"; };
 		C1667C8729B885D20011EA81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1667C8A29B885D20011EA81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1667C8C29B885D20011EA81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewCell.swift; sourceTree = "<group>"; };
+		C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
+		C1667CA529B8C7660011EA81 /* ComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicModel.swift; sourceTree = "<group>"; };
+		C1667CA729B8C9C60011EA81 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		C1667CA929B8C9DF0011EA81 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		C1E8841329B9CF1C005E4B78 /* ComicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailViewController.swift; sourceTree = "<group>"; };
+		C1E8841929BB413B005E4B78 /* ComicPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicPresenter.swift; sourceTree = "<group>"; };
+		C1E8841C29BB43DA005E4B78 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		C1E8842229BB5EDF005E4B78 /* ComicDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailPresenter.swift; sourceTree = "<group>"; };
+		C1E8842929BB7813005E4B78 /* TextField + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField + Ext.swift"; sourceTree = "<group>"; };
+		C1E8842C29BBA03A005E4B78 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		C1E8842E29BBA046005E4B78 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1667C9A29B888D90011EA81 /* SnapKit in Frameworks */,
+				C1667C9D29B888E60011EA81 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +82,138 @@
 		C1667C7D29B885D00011EA81 /* MarvelComicsAlamofire */ = {
 			isa = PBXGroup;
 			children = (
-				C1667C7E29B885D00011EA81 /* AppDelegate.swift */,
-				C1667C8029B885D00011EA81 /* SceneDelegate.swift */,
-				C1667C8229B885D00011EA81 /* ViewController.swift */,
-				C1667C8429B885D00011EA81 /* Main.storyboard */,
+				C1667C9329B886820011EA81 /* Sources */,
+				C1667C9229B886770011EA81 /* Resources */,
+			);
+			path = MarvelComicsAlamofire;
+			sourceTree = "<group>";
+		};
+		C1667C9229B886770011EA81 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				C1667C8729B885D20011EA81 /* Assets.xcassets */,
 				C1667C8929B885D20011EA81 /* LaunchScreen.storyboard */,
 				C1667C8C29B885D20011EA81 /* Info.plist */,
 			);
-			path = MarvelComicsAlamofire;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C1667C9329B886820011EA81 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8842B29BBA029005E4B78 /* Constants */,
+				C1667C9429B8868B0011EA81 /* App */,
+				C1667CA029B8B79A0011EA81 /* Extension */,
+				C1667C9629B8869C0011EA81 /* Networking */,
+				C1E8841B29BB43C6005E4B78 /* Builder */,
+				C1E8841E29BB5DFA005E4B78 /* ScenesDetailComic */,
+				C1E8841729BB2FA9005E4B78 /* ScenesComic */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		C1667C9429B8868B0011EA81 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C1667C7E29B885D00011EA81 /* AppDelegate.swift */,
+				C1667C8029B885D00011EA81 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C1667C9529B8868F0011EA81 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C1667CA529B8C7660011EA81 /* ComicModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C1667C9629B8869C0011EA81 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C1667CA729B8C9C60011EA81 /* NetworkingService.swift */,
+				C1667CA929B8C9DF0011EA81 /* NetworkingError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		C1667C9729B886A30011EA81 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1667C8229B885D00011EA81 /* ComicViewController.swift */,
+				C1667C9E29B8A0A90011EA81 /* ComicViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C1667CA029B8B79A0011EA81 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C1667CA129B8B7AB0011EA81 /* UIColor + Ext.swift */,
+				C1E8842929BB7813005E4B78 /* TextField + Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C1E8841729BB2FA9005E4B78 /* ScenesComic */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8841829BB2FC2005E4B78 /* Presenter */,
+				C1667C9729B886A30011EA81 /* View */,
+				C1667C9529B8868F0011EA81 /* Model */,
+			);
+			path = ScenesComic;
+			sourceTree = "<group>";
+		};
+		C1E8841829BB2FC2005E4B78 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8841929BB413B005E4B78 /* ComicPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C1E8841B29BB43C6005E4B78 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8841C29BB43DA005E4B78 /* ModuleBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		C1E8841E29BB5DFA005E4B78 /* ScenesDetailComic */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8842029BB5E6C005E4B78 /* Presenter */,
+				C1E8842129BB5ECB005E4B78 /* View */,
+			);
+			path = ScenesDetailComic;
+			sourceTree = "<group>";
+		};
+		C1E8842029BB5E6C005E4B78 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8842229BB5EDF005E4B78 /* ComicDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C1E8842129BB5ECB005E4B78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8841329B9CF1C005E4B78 /* ComicDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C1E8842B29BBA029005E4B78 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C1E8842C29BBA03A005E4B78 /* Colors.swift */,
+				C1E8842E29BBA046005E4B78 /* Fonts.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +232,10 @@
 			dependencies = (
 			);
 			name = MarvelComicsAlamofire;
+			packageProductDependencies = (
+				C1667C9929B888D90011EA81 /* SnapKit */,
+				C1667C9C29B888E60011EA81 /* Alamofire */,
+			);
 			productName = MarvelComicsAlamofire;
 			productReference = C1667C7B29B885D00011EA81 /* MarvelComicsAlamofire.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +264,10 @@
 				Base,
 			);
 			mainGroup = C1667C7229B885D00011EA81;
+			packageReferences = (
+				C1667C9829B888D80011EA81 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C1667C9B29B888E60011EA81 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = C1667C7C29B885D00011EA81 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +284,6 @@
 			files = (
 				C1667C8B29B885D20011EA81 /* LaunchScreen.storyboard in Resources */,
 				C1667C8829B885D20011EA81 /* Assets.xcassets in Resources */,
-				C1667C8629B885D00011EA81 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +294,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1667C8329B885D00011EA81 /* ViewController.swift in Sources */,
+				C1E8841429B9CF1C005E4B78 /* ComicDetailViewController.swift in Sources */,
+				C1E8842F29BBA046005E4B78 /* Fonts.swift in Sources */,
+				C1667C8329B885D00011EA81 /* ComicViewController.swift in Sources */,
+				C1E8841A29BB413B005E4B78 /* ComicPresenter.swift in Sources */,
+				C1E8842D29BBA03A005E4B78 /* Colors.swift in Sources */,
+				C1E8842A29BB7813005E4B78 /* TextField + Ext.swift in Sources */,
+				C1667C9F29B8A0A90011EA81 /* ComicViewCell.swift in Sources */,
+				C1E8841D29BB43DA005E4B78 /* ModuleBuilder.swift in Sources */,
+				C1667CAA29B8C9DF0011EA81 /* NetworkingError.swift in Sources */,
 				C1667C7F29B885D00011EA81 /* AppDelegate.swift in Sources */,
+				C1667CA229B8B7AB0011EA81 /* UIColor + Ext.swift in Sources */,
 				C1667C8129B885D00011EA81 /* SceneDelegate.swift in Sources */,
+				C1667CA829B8C9C60011EA81 /* NetworkingService.swift in Sources */,
+				C1667CA629B8C7660011EA81 /* ComicModel.swift in Sources */,
+				C1E8842329BB5EDF005E4B78 /* ComicDetailPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C1667C8429B885D00011EA81 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C1667C8529B885D00011EA81 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C1667C8929B885D20011EA81 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -289,12 +449,15 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KD67T552T3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MarvelComicsAlamofire/Info.plist;
+				INFOPLIST_FILE = MarvelComicsAlamofire/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +465,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.my.MarvelComicsAlamofire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -317,12 +483,15 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KD67T552T3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MarvelComicsAlamofire/Info.plist;
+				INFOPLIST_FILE = MarvelComicsAlamofire/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +499,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.my.MarvelComicsAlamofire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -358,6 +530,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C1667C9829B888D80011EA81 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		C1667C9B29B888E60011EA81 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C1667C9929B888D90011EA81 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1667C9829B888D80011EA81 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		C1667C9C29B888E60011EA81 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1667C9B29B888E60011EA81 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C1667C7329B885D00011EA81 /* Project object */;
 }
