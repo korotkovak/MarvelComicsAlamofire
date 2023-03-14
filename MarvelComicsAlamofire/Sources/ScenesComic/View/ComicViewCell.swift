@@ -119,4 +119,8 @@ final class ComicViewCell: UICollectionViewCell, ComicViewCellProtocol {
             }
         }
     }
+
+    override func prepareForReuse() {
+        imageComic.image = nil
+    }
 }

@@ -208,29 +208,27 @@ final class ComicDetailViewController: UIViewController, ComicDetailViewProtocol
 
     func fillSettings(with model: Comic?) {
         guard let model = model else { return }
-        
-        DispatchQueue.main.async {
-            self.titleLabel.text = model.title
-            self.descriptionLabel.text = model.description
 
-            if model.pageCount == 0 || model.pageCount == nil {
-                self.pagesLabel.text = Strings.pagesLabelText + "is unknown"
-            } else if let page = model.pageCount {
-                self.pagesLabel.text = Strings.pagesLabelText + "\(page)"
+        titleLabel.text = model.title
+        descriptionLabel.text = model.description
+
+        if model.pageCount == 0 || model.pageCount == nil {
+            pagesLabel.text = Strings.pagesLabelText + "is unknown"
+        } else if let page = model.pageCount {
+            pagesLabel.text = Strings.pagesLabelText + "\(page)"
+        }
+
+        guard let creators = model.creators.items else { return }
+
+        for creator in creators {
+            if creator.role == "editor" {
+                editorRoleLabel.text = creator.role
+                editorNameLabel.text = creator.name
             }
 
-            guard let creators = model.creators.items else { return }
-
-            for creator in creators {
-                if creator.role == "editor" {
-                    self.editorRoleLabel.text = creator.role
-                    self.editorNameLabel.text = creator.name
-                }
-
-                if creator.role == "writer" {
-                    self.writerRoleLabel.text = creator.role
-                    self.writerNameLabel.text = creator.name
-                }
+            if creator.role == "writer" {
+                writerRoleLabel.text = creator.role
+                writerNameLabel.text = creator.name
             }
         }
 

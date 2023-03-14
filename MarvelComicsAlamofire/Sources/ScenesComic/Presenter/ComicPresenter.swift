@@ -42,14 +42,12 @@ final class ComicPresenter: ComicViewPresenterProtocol {
         networkService.getData(
             urlRequest: networkService.getUrlMarvel()
         ) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let dataComics):
-                    self?.comics = dataComics
-                    self?.view?.succes()
-                case .failure(let error):
-                    self?.view?.failure(error: error)
-                }
+            switch result {
+            case .success(let dataComics):
+                self?.comics = dataComics
+                self?.view?.succes()
+            case .failure(let error):
+                self?.view?.failure(error: error)
             }
         }
     }
